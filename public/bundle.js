@@ -27120,7 +27120,15 @@
 	  },
 
 	  handleToggle: function handleToggle(id) {
-	    alert(id);
+	    var updatedTodos = this.state.todos.map(function (todo) {
+	      if (todo.id === id) {
+	        todo.completed = !todo.completed;
+	      }
+
+	      return todo;
+	    });
+
+	    this.setState({ todos: updatedTodos });
 	  },
 
 	  handleSearch: function handleSearch(showCompleted, searchText) {
