@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require("react");
+
 
 var Todo = React.createClass({
   render: function () {
@@ -9,9 +10,9 @@ var Todo = React.createClass({
 
     return (
       <div>
-        {id}. {text}
+        <div>{id}. {text}</div>
       </div>
-    )
+    );
   }
 });
 
