@@ -27076,20 +27076,107 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var TodoList = __webpack_require__(236);
 
 	var TodoApp = React.createClass({
 	  displayName: 'TodoApp',
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      todos: [{
+	        id: 1,
+	        text: 'Walk the dog'
+	      }, {
+	        id: 2,
+	        text: 'Clean the yard'
+	      }, {
+	        id: 3,
+	        text: 'Leave mail on porch'
+	      }, {
+	        id: 4,
+	        text: 'Play video games'
+	      }]
+	    };
+	  },
 	  render: function render() {
+	    var todos = this.state.todos;
+
+
 	    return React.createElement(
 	      'div',
 	      null,
-	      'TodoApp.jsx'
+	      React.createElement(TodoList, { todos: todos })
 	    );
 	  }
 	});
 
 	module.exports = TodoApp;
+
+/***/ },
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(1);
+	var Todo = __webpack_require__(237);
+
+	var TodoList = React.createClass({
+	  displayName: 'TodoList',
+
+	  render: function render() {
+	    var todos = this.props.todos;
+
+	    var renderTodos = function renderTodos() {
+	      return todos.map(function (todo) {
+	        console.log(_extends({}, todo));
+	        return React.createElement(Todo, _extends({ key: todo.id }, todo));
+	      });
+	    };
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      renderTodos()
+	    );
+	  }
+	});
+
+	module.exports = TodoList;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Todo = React.createClass({
+	  displayName: 'Todo',
+
+	  render: function render() {
+	    var _props = this.props;
+	    var id = _props.id;
+	    var text = _props.text;
+
+	    debugger;
+	    // console.log(text);
+	    // console.log(this.props);
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      id,
+	      '. ',
+	      text
+	    );
+	  }
+	});
+
+	module.exports = Todo;
 
 /***/ }
 /******/ ]);

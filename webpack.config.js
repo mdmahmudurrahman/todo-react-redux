@@ -11,7 +11,7 @@ module.exports = {
       "./app/components"
     ],
     alias: {
-      
+       
     },
     extensions: ["", ".js", ".jsx"]
   },
