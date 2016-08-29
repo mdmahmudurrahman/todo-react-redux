@@ -27092,16 +27092,20 @@
 	      searchText: '',
 	      todos: [{
 	        id: uuid(),
-	        text: 'Walk the dog'
+	        text: 'Walk the dog',
+	        completed: true
 	      }, {
 	        id: uuid(),
-	        text: 'Clean the yard'
+	        text: 'Clean the yard',
+	        completed: false
 	      }, {
 	        id: uuid(),
-	        text: 'Leave mail on porch'
+	        text: 'Leave mail on porch',
+	        completed: true
 	      }, {
 	        id: uuid(),
-	        text: 'Play video games'
+	        text: 'Play video games',
+	        completed: true
 	      }]
 	    };
 	  },
@@ -27109,7 +27113,8 @@
 	    this.setState({
 	      todos: [].concat(_toConsumableArray(this.state.todos), [{
 	        id: uuid(),
-	        text: text
+	        text: text,
+	        completed: false
 	      }])
 	    });
 	  },
@@ -27183,6 +27188,7 @@
 	    var _props = this.props;
 	    var id = _props.id;
 	    var text = _props.text;
+	    var completed = _props.completed;
 	    // console.log(text);
 	    // console.log(this.props);
 
@@ -27192,8 +27198,7 @@
 	      React.createElement(
 	        "div",
 	        null,
-	        id,
-	        ". ",
+	        React.createElement("input", { type: "checkbox", checked: completed }),
 	        text
 	      )
 	    );
