@@ -30,3 +30,17 @@ var final = ['Andrew', ...names];
 final.forEach(function (name) {
   console.log('Hi ' + name);
 });
+
+
+// localStorage
+
+// localStorage.setItem("1", "Mahmud")
+// undefined
+// localStorage.getItem(1)
+// "Mahmud"
+// localStorage.getItem("1")
+// "Mahmud"
+// localStorage.removeItem(1)
+// undefined
+// localStorage.getItem("1")
+// null
