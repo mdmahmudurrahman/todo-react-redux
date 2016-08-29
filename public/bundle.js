@@ -27118,6 +27118,11 @@
 	      }])
 	    });
 	  },
+
+	  handleToggle: function handleToggle(id) {
+	    alert(id);
+	  },
+
 	  handleSearch: function handleSearch(showCompleted, searchText) {
 	    this.setState({
 	      showCompleted: showCompleted,
@@ -27132,7 +27137,7 @@
 	      'div',
 	      null,
 	      React.createElement(TodoSearch, { onSearch: this.handleSearch }),
-	      React.createElement(TodoList, { todos: todos }),
+	      React.createElement(TodoList, { todos: todos, onToggle: this.handleToggle }),
 	      React.createElement(AddTodo, { onAddTodo: this.handleAddTodo })
 	    );
 	  }
@@ -27155,11 +27160,13 @@
 	  displayName: 'TodoList',
 
 	  render: function render() {
+	    var _this = this;
+
 	    var todos = this.props.todos;
 
 	    var renderTodos = function renderTodos() {
 	      return todos.map(function (todo) {
-	        return React.createElement(Todo, _extends({ key: todo.id }, todo));
+	        return React.createElement(Todo, _extends({ key: todo.id }, todo, { onToggle: _this.props.onToggle }));
 	      });
 	    };
 
@@ -27185,6 +27192,8 @@
 	  displayName: "Todo",
 
 	  render: function render() {
+	    var _this = this;
+
 	    var _props = this.props;
 	    var id = _props.id;
 	    var text = _props.text;
@@ -27194,13 +27203,11 @@
 
 	    return React.createElement(
 	      "div",
-	      null,
-	      React.createElement(
-	        "div",
-	        null,
-	        React.createElement("input", { type: "checkbox", checked: completed }),
-	        text
-	      )
+	      { onClick: function onClick() {
+	          _this.props.onToggle(id);
+	        } },
+	      React.createElement("input", { type: "checkbox", checked: completed }),
+	      text
 	    );
 	  }
 	});
